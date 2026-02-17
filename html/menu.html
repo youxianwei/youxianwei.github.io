@@ -1,0 +1,39 @@
+<section id="menu">
+  <section>
+    <form action="{pboot:scaction}" method="get" role="search" class="search">
+      <input type="text" name="keyword" placeholder="输入内容回车搜索">
+    </form>
+  </section>
+  <section>
+    <ul class="links">
+      <li><a href="{pboot:sitedomain}">首页</a></li>
+      {pboot:nav num=10 parent=0}
+      <li><a href="[nav:link]">[nav:name]</a></li>
+	  {/pboot:nav}
+    </ul>
+  </section>
+</section>
+<script>
+
+    $(function() {
+
+        var surl = location.href;
+
+        var surl2 = $(".breadcrumbs a:eq(1)").attr("href");
+
+        $("#header nav ul li a").each(function() {
+
+            if ($(this).attr("href") == surl || $(this).attr("href") == surl2) $(this).addClass(
+
+                "active")
+
+        });
+
+    });
+
+</script> 
+<script type="text/javascript" src="{pboot:sitetplpath}/js/browser.min.js?t=1625450376"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/breakpoints.min.js?t=1625450376"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/util.js?t=1625450384"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?t=1625450382"></script>
+<div class="Jz52-gotop fas fa-angle-double-up"><span class="label">返回顶部</span></div>

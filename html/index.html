@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<title>{pboot:sitetitle}</title>
+<meta name="keywords" content="{pboot:sitekeywords}">
+<meta name="description" content="{pboot:sitedescription}">
+<meta name="author" content="www.xiumoku.com"/>
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style.css?t=1625543438" />
+<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.2.4.min.js?t=1625450386"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/zblogphp.js?t=1625450376"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/c_html_js_add.js?t=1625450934"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/custom.js?t=1625450382"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/adsbygoogle.js?t=1625450376"></script>
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style_1.css?t=1625450374" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/ytuser.css?t=1625450374" />
+</head>
+
+<body class="">
+{include file=head.html}
+<div id="wrapper">
+  <div id="main">
+    <div id='block001'>
+      {pboot:list scode=* num=5}
+      <article class="post">
+        <header>
+          <div class="title">
+            <h2><a href="[list:link]">[list:title]</a></h2>
+          </div>
+          <div class="meta">
+            <time class="published" datetime="[list:date style=Y-m-d]">[list:date style=Y-m-d]</time>
+            <div class="author"><span class="name">admin</span><img src="{pboot:sitetplpath}/images/dfboy.png" alt="admin"></div>
+          </div>
+        </header>
+        <p>[list:description]...</p>
+        <footer>
+          <ul class="actions">
+            <li><a href="[list:link]" class="button large">查看文章详情</a></li>
+          </ul>
+          <ul class="stats">
+          <li><a href="[list:sortlink]">[list:sortname]</a></li>
+          <li><a class="icon solid fa-eye">[list:visits]</a></li>
+        </ul>
+        </footer>
+      </article>
+      {/pboot:list}
+    </div>
+  </div>
+  <section id="sidebar">
+    {include file=left.html}
+    <dl class="function" id="divLinkage">
+      <dt class="function_t">友情链接</dt>
+      <dd class="function_c">
+        <ul>
+          {pboot:link  gid=1 num=50}
+          <li><a href="[link:link]" target="_blank">[link:name]</a> </li>
+          {/pboot:link}
+        </ul>
+      </dd>
+    </dl>
+    {include file=foot.html}
+  </section>
+</div>
+{include file=menu.html}
+</body>
+</html>

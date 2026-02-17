@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<title>{sort:title}</title>
+<meta name="keywords" content="{sort:keywords}">
+<meta name="description" content="{sort:description}">
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style.css?t=1625543438" />
+<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.2.4.min.js?t=1625450386"></script>
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style_1.css?t=1625450374" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/ytuser.css?t=1625450374" />
+</head>
+
+<body class="">
+{include file=head.html}
+<div class="position">当前位置：{pboot:position separator=>> }</div>
+<div id="wrapper">
+  <div id="main">
+    <article class="post">
+      <header>
+        <div class="title">
+          <h1>{sort:name}</h1>
+        </div>
+      </header>
+      <div class="Content">
+        {content:content}
+      </div>
+    </article>
+  </div>
+  <section id="sidebar">
+    {include file=left.html}
+    {include file=foot.html}
+  </section>
+</div>
+{include file=menu.html}
+</body>
+</html>

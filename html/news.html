@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<title>{content:title}</title>
+<meta name="keywords" content="{content:keywords}">
+<meta name="description" content="{content:description}">
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style.css?t=1625543438" />
+<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.2.4.min.js?t=1625450386"></script>
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style_1.css?t=1625450374" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/ytuser.css?t=1625450374" />
+</head>
+<body class="">
+{include file=head.html}
+<div class="position">当前位置：{pboot:position separator=>> }</div>
+<div id="wrapper">
+  <div id="main">
+    <article class="post">
+      <header>
+        <div class="title">
+          <h1>{content:title}</h1>
+          <p>{content:description}</p>
+        </div>
+        <div class="meta">
+          <time class="published" datetime="{content:date}">{content:date}</time>
+          <div class="author"><span class="name">admin</span><img src="{pboot:sitetplpath}/images/dfboy.png" alt=""></div>
+        </div>
+      </header>
+      <div class="Content">
+        {content:content}
+        <p><br />
+        </p>
+      </div>
+       
+      <footer>
+        <ul class="stats">
+          <li><a href="{sort:link}">{sort:name}</a></li>
+          <li><a href="#" class="icon solid fa-eye"><span id="countnum">{content:visits}</span><i id="eyou_arcclick_1626749259_23" class="eyou_arcclick" style="font-style:normal"></i> 
+           </a></li>
+        </ul>
+      </footer>
+    </article>
+  </div>
+  <section id="sidebar">
+    {include file=left.html}
+    {include file=foot.html}
+  </section>
+</div>
+{include file=menu.html}
+</body>
+</html>

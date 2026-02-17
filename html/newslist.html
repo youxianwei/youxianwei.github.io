@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<title>{sort:title}</title>
+<meta name="keywords" content="{sort:keywords}">
+<meta name="description" content="{sort:description}">
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style.css?t=1625543438" />
+<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.2.4.min.js?t=1625450386"></script>
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/style_1.css?t=1625450374" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitetplpath}/css/ytuser.css?t=1625450374" />
+</head>
+
+<body class="">
+{include file=head.html}
+<div class="position">当前位置：{pboot:position separator=>> }</div>
+<div id="wrapper">
+  <div id="main">
+    {pboot:list num=5 order=date}
+    <article class="post">
+      <header>
+        <div class="title">
+          <h2><a href="[list:link]">[list:title]</a></h2>
+        </div>
+        <div class="meta">
+          <time class="published" datetime="[list:date style=Y-m-d]">[list:date style=Y-m-d]</time>
+          <div class="author"><span class="name">admin</span><img src="{pboot:sitetplpath}/images/dfboy.png" alt="admin"></div>
+        </div>
+      </header>
+      <p>[list:description lencn=80]</p>
+      <footer>
+        <ul class="actions">
+          <li><a href="[list:link]" class="button large">查看文章详情</a></li>
+        </ul>
+        <ul class="stats">
+          <li><a href="[list:sortlink]">[list:sortname]</a></li>
+          <li><a class="icon solid fa-eye">[list:visits]</a></li>
+        </ul>
+      </footer>
+    </article>
+    {/pboot:list}
+    
+    <div class="ab_pages">
+      <ul>
+        {pboot:if({page:rows}>0)}
+        <a href="{page:index}">首页</a>
+        <a href='{page:pre}'>上一页</a>
+        {page:numbar}
+        <a href='{page:next}'>下一页</a>
+        <a href='{page:last}'>末页</a>
+        {/pboot:if}
+      </ul>
+    </div>
+  </div>
+  <section id="sidebar">
+    {include file=left.html}
+    {include file=foot.html}
+  </section>
+</div>
+{include file=menu.html}
+</body>
+</html>

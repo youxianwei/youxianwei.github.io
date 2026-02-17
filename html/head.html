@@ -1,0 +1,22 @@
+<div class="heanav">
+  <header id="header"> <a href="{pboot:sitedomain}" class="logo"> <img src="{pboot:sitelogo}" class="logo" alt="{pboot:pagetitle}"></a>
+    <nav class="links">
+      <ul>
+        <li><a href="{pboot:sitedomain}" {pboot:if(0=='{sort:scode}')}class='active'{/pboot:if}>首页</a></li>
+        {pboot:nav num=10 parent=0}
+        <li><a href="[nav:link]" {pboot:if('[nav:scode]'=='{sort:tcode}')}class="active"{/pboot:if}>[nav:name]</a></li>
+        {/pboot:nav}
+      </ul>
+    </nav>
+    <nav class="main">
+      <ul>
+        <li class="search"><a class="fa-search" href="#search">Search</a>
+          <form action="{pboot:scaction}" method="get" role="search" id="search">
+            <input type="text" name="keyword" placeholder="输入内容回车搜索">
+          </form>
+        </li>
+        <li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
