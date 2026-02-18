@@ -31,9 +31,15 @@ body {
     background-color: var(--light-bg);
     line-height: 1.6;
     overflow-x: hidden;
+    /* 添加背景图片 */
+    background-image: url('../images/网页背景.jpg');
+    background-size: cover; /* 使背景图片覆盖整个容器[14](@ref) */
+    background-position: center; /* 背景图片居中[14](@ref) */
+    background-attachment: fixed; /* 固定背景 */
+    background-repeat: no-repeat; /* 防止图片重复[13](@ref) */
 }
 
-/* 侧边导航栏样式 */
+/* 侧边导航栏样式 - 修改为横版 */
 aside {
     position: fixed;
     left: 0;
@@ -43,26 +49,33 @@ aside {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 0 10px 10px 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column; /* 使用flexbox布局[2](@ref) */
+    align-items: center; /* 居中对齐 */
 }
 
 aside a {
     display: block;
     text-decoration: none;
     color: var(--secondary-color);
-    padding: 12px 20px;
+    padding: 12px 15px;
     margin: 8px 0;
     border-radius: 5px;
     transition: all var(--transition-speed) ease;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    text-align: center;
 }
 
+/* 移除文字旋转，改为横版 */
 aside a span {
     display: block;
-    transform: rotate(-90deg);
-    white-space: nowrap;
+    /* 移除 transform: rotate(-90deg); */
+    white-space: nowrap; /* 防止换行[11](@ref) */
     font-weight: 500;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 aside a:hover {
@@ -86,10 +99,12 @@ section {
     align-items: center;
     padding: 80px 20px;
     position: relative;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明背景，确保文字可读 */
+    backdrop-filter: blur(5px); /* 背景模糊效果 */
 }
 
 .page_one {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
     color: white;
     text-align: center;
 }
@@ -127,7 +142,7 @@ section {
     font-size: 2.5rem;
     margin-bottom: 20px;
     font-weight: 300;
-    font-style: italic;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 .cen_text hr {
@@ -142,11 +157,12 @@ section {
     font-size: 1.5rem;
     margin: 10px 0;
     font-weight: 400;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 /* 基本资料页面样式 */
 .page_two {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .con_wrap {
@@ -164,6 +180,7 @@ section {
     font-size: 3rem;
     color: var(--secondary-color);
     margin-bottom: 20px;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 .tit_wrap h2 {
@@ -173,12 +190,13 @@ section {
     max-width: 800px;
     margin: 0 auto;
     font-weight: 400;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 .myinfo table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -188,6 +206,9 @@ section {
     padding: 20px;
     border-bottom: 1px solid #eee;
     vertical-align: middle;
+    text-align: left; /* 左对齐[10](@ref) */
+    white-space: nowrap; /* 不换行[11](@ref) */
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 .myinfo table tr:last-child td {
@@ -197,6 +218,7 @@ section {
 .myinfo table td:first-child {
     width: 200px;
     text-align: center;
+    white-space: nowrap; /* 不换行[11](@ref) */
 }
 
 .myinfo table img {
@@ -209,11 +231,11 @@ section {
 
 /* 专业技能页面样式 */
 .page_three {
-    background-color: var(--light-bg);
+    background-color: rgba(248, 249, 250, 0.9);
 }
 
 .skill_con {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     padding: 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -227,6 +249,7 @@ section {
     padding-left: 20px;
     position: relative;
     line-height: 1.8;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 .text_wrap p:before {
@@ -240,7 +263,7 @@ section {
 
 /* 教育经历和工作经验页面样式 */
 .page_four, .page_five {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .work_con {
@@ -273,6 +296,7 @@ section {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--secondary-color);
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 .work_text {
@@ -289,11 +313,11 @@ section {
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 10px solid white;
+    border-right: 10px solid rgba(255, 255, 255, 0.95);
 }
 
 .exCon {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -304,11 +328,13 @@ section {
     color: var(--primary-color);
     margin-bottom: 15px;
     font-size: 1.1rem;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 .exCon p {
     margin-bottom: 10px;
     line-height: 1.6;
+    font-style: normal; /* 取消斜体[6](@ref) */
 }
 
 /* 向下箭头样式 */
@@ -351,7 +377,31 @@ section {
 /* 响应式设计 */
 @media (max-width: 768px) {
     aside {
-        display: none; /* 移动端隐藏侧边栏 */
+        display: flex;
+        flex-direction: row; /* 移动端改为横向排列[2](@ref) */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        padding: 10px;
+        border-radius: 0;
+        justify-content: space-around; /* 子元素在主轴上均匀分布[2](@ref) */
+        align-items: center; /* 子元素在交叉轴上居中对齐[2](@ref) */
+        height: 60px;
+        z-index: 1000;
+    }
+    
+    aside a {
+        margin: 0 5px;
+        padding: 8px 12px;
+        flex: 1;
+        text-align: center;
+    }
+    
+    aside a span {
+        white-space: nowrap; /* 防止换行[11](@ref) */
+        font-size: 0.9rem;
     }
     
     .cen_text h2 {
@@ -373,11 +423,14 @@ section {
     .myinfo table td {
         display: block;
         width: 100% !important;
-        text-align: left !important;
+        text-align: left !important; /* 左对齐[10](@ref) */
+        white-space: normal; /* 允许换行以适应移动端 */
+        padding: 15px 10px;
     }
     
     .myinfo table td:first-child {
         margin-bottom: 20px;
+        text-align: center;
     }
     
     .work_con:before {
@@ -390,24 +443,25 @@ section {
     
     .work_time, .work_text {
         width: 100%;
-        text-align: left;
+        text-align: left; /* 左对齐[10](@ref) */
     }
     
     .work_time {
         padding-left: 60px;
         margin-bottom: 10px;
+        text-align: left; /* 左对齐[10](@ref) */
     }
     
     .triangle-left {
         left: 20px;
         border-right: 10px solid transparent;
-        border-left: 10px solid white;
+        border-left: 10px solid rgba(255, 255, 255, 0.95);
     }
 }
 
 @media (max-width: 480px) {
     section {
-        padding: 60px 15px;
+        padding: 80px 15px 60px; /* 增加顶部内边距，为移动端导航栏留空间 */
     }
     
     .portrait {
@@ -418,4 +472,18 @@ section {
     .skill_con {
         padding: 25px;
     }
+    
+    aside a span {
+        font-size: 0.8rem;
+    }
+}
+
+/* 全局取消斜体样式 */
+h1, h2, h3, h4, h5, h6, p, span, div, td, th, li {
+    font-style: normal !important; /* 强制取消所有斜体[6](@ref) */
+}
+
+/* 确保所有文本左对齐 */
+.con_wrap, .myinfo, .skill_con, .work_con, .exCon {
+    text-align: left; /* 左对齐[10](@ref) */
 }
