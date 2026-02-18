@@ -1,16 +1,17 @@
-<!-- main.js代码 ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ -->  
 
+
+<!-- main.js代码 ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ -->  
 
 // js/main.js
 document.addEventListener('DOMContentLoaded', function() {
     console.log('个人主页已加载完成');
     
     // 1. 平滑滚动功能
-    const scrollLink = document.querySelectorAll('.scroll');
-    scrollLink.forEach(link => {
+    const scrollLinks = document.querySelectorAll('.scroll');
+    scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const currentSection = this.closest('页面区块');
+            const currentSection = this.closest('section');
             const nextSection = currentSection.nextElementSibling;
             
             if (nextSection) {
@@ -22,18 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-
-    
-    
     // 2. 导航栏高亮功能
     const navLinks = document.querySelectorAll('aside a');
-    const 页面区块们 = document.querySelectorAll('页面区块');
+    const sections = document.querySelectorAll('section');
     
     function highlightNav() {
         let current = '';
         const scrollPos = window.scrollY + 100;
         
-        页面区块们.forEach(section => {
+        sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
@@ -43,33 +41,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         navLinks.forEach(link => {
-            link.classList.remove('游显维');
+            link.classList.remove('cur_a');
             if (link.getAttribute('href') === `#${current}` || 
                 link.textContent.includes(getNavText(current))) {
-                link.classList.add('游显维');
+                link.classList.add('cur_a');
             }
         });
     }
     
     function getNavText(sectionId) {
         const map = {
-            '页面1': '游显维',
+            'page1': '游显维',
             'page2': '基本资料',
             'page3': '专业技能',
             'page4': '教育经历',
-            'page5': '工作经历'
+            'page5': '工作经验'
         };
         return map[sectionId] || '';
     }
     
     // 3. 图片悬停效果增强
-    const 个人肖像Img = document.querySelector('.个人肖像 img');
-    if (个人肖像Img) {
-        个人肖像Img.addEventListener('mouseenter', function() {
+    const portraitImg = document.querySelector('.portrait img');
+    if (portraitImg) {
+        portraitImg.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.1)';
         });
         
-        个人肖像Img.addEventListener('mouseleave', function() {
+        portraitImg.addEventListener('mouseleave', function() {
             this.style.transform = 'scale(1)';
         });
     }
@@ -193,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.textContent.trim();
-                const targetSection = Array.from(页面区块们).find(section => {
+                const targetSection = Array.from(sections).find(section => {
                     const sectionTitle = section.querySelector('h1')?.textContent || 
                                        section.querySelector('h2')?.textContent;
                     return sectionTitle && sectionTitle.includes(targetId);
