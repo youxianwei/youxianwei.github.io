@@ -1,3 +1,7 @@
+<!-- main.css代码  ███████████████████████████████████████████████████████████████████████████████████████████████████-->
+
+
+
 /* css/main.css */   
 /* 基础重置与变量定义 */   
 :root {
@@ -38,7 +42,7 @@ body {
     background-repeat: no-repeat;   
 }
    
-/* 修改aside栏样式 - 横版文字 */   
+/* 修改侧边导航栏样式 - 横版文字 */   
 aside {
     position: fixed;
     left: 0;
@@ -84,14 +88,14 @@ aside a:hover {
     transform: translateX(5px);   
 }
    
-aside a.游显维 {
+aside a.cur_a {
     background-color: var(--primary-color);
     color: white;
     font-weight: bold;   
 }
    
 /* 页面通用样式 */   
-页面区块 {
+section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -101,7 +105,7 @@ aside a.游显维 {
     position: relative;   
 }
    
-.页面1 {
+.page_one {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
     color: white;
     text-align: center;
@@ -116,7 +120,7 @@ aside a.游显维 {
     margin: 0 auto;   
 }
    
-.个人肖像 {
+.portrait {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -126,11 +130,11 @@ aside a.游显维 {
     transition: transform var(--transition-speed) ease;   
 }
    
-.个人肖像:hover {
+.portrait:hover {
     transform: scale(1.05);   
 }
    
-.个人肖像 img {
+.portrait img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -138,7 +142,7 @@ aside a.游显维 {
 }
    
 /* 移除斜体字体样式 */   
-.至理名言 h2 {
+.cen_text h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     font-weight: 300;
@@ -146,7 +150,7 @@ aside a.游显维 {
     font-style: normal;   
 }
    
-.至理名言 hr {
+.cen_text hr {
     width: 100px;
     margin: 25px auto;
     border: none;
@@ -154,7 +158,7 @@ aside a.游显维 {
     background: rgba(255, 255, 255, 0.5);   
 }
    
-.至理名言 h3 {
+.cen_text h3 {
     font-size: 1.5rem;
     margin: 10px 0;
     font-weight: 400;
@@ -163,23 +167,23 @@ aside a.游显维 {
 }
    
 /* 基本资料页面样式 */   
-.page2 {
+.page_two {
     background-color: rgba(255, 255, 255, 0.9); /* 添加半透明背景增强可读性 */
     backdrop-filter: blur(3px);   
 }
    
-.资料总览 {
+.con_wrap {
     max-width: var(--max-width);
     width: 100%;
     margin: 0 auto;   
 }
    
-.换行界线 {
+.tit_wrap {
     text-align: center;
     margin-bottom: 50px;   
 }
    
-.换行界线 h1 {
+.tit_wrap h1 {
     font-size: 3rem;
     color: var(--secondary-color);
     margin-bottom: 20px;
@@ -187,7 +191,7 @@ aside a.游显维 {
     font-style: normal;   
 }
    
-.换行界线 h2 {
+.tit_wrap h2 {
     font-size: 1.2rem;
     color: #666;
     line-height: 1.8;
@@ -198,7 +202,7 @@ aside a.游显维 {
     font-style: normal;   
 }
    
-.基本资料 table {
+.myinfo table {
     width: 100%;
     border-collapse: collapse;
     background: rgba(255, 255, 255, 0.95);
@@ -207,18 +211,18 @@ aside a.游显维 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);   
 }
    
-.基本资料 table td {
+.myinfo table td {
     padding: 20px;
     border-bottom: 1px solid #eee;
     vertical-align: middle;   
 }
    
-.基本资料 table tr:last-child td {
+.myinfo table tr:last-child td {
     border-bottom: none;   
 }
    
 /* 修改基本资料表格样式 - 左对齐且不换行 */   
-.基本资料 table td:first-child {
+.myinfo table td:first-child {
     width: 200px;
     text-align: left; /* 改为左对齐 */
     font-weight: bold;
@@ -226,14 +230,14 @@ aside a.游显维 {
     white-space: nowrap; /* 禁止换行 */   
 }
    
-.基本资料 table td:last-child {
+.myinfo table td:last-child {
     text-align: left; /* 改为左对齐 */
     white-space: nowrap; /* 禁止换行 */
     overflow: hidden;
     text-overflow: ellipsis; /* 如果内容太长，显示省略号 */   
 }
    
-.基本资料 table img {
+.myinfo table img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -242,12 +246,12 @@ aside a.游显维 {
 }
    
 /* 专业技能页面样式 */   
-.page3 {
+.page_three {
     background-color: rgba(248, 249, 250, 0.9); /* 添加半透明背景 */
     backdrop-filter: blur(3px);   
 }
    
-.技能介绍 {
+.skill_con {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     padding: 40px;
@@ -256,7 +260,7 @@ aside a.游显维 {
     margin: 0 auto;   
 }
    
-.文段样式 p {
+.text_wrap p {
     font-size: 1.1rem;
     margin-bottom: 20px;
     padding-left: 20px;
@@ -266,7 +270,7 @@ aside a.游显维 {
     font-style: normal;   
 }
    
-.文段样式 p:before {
+.text_wrap p:before {
     content: "•";
     color: var(--primary-color);
     font-size: 1.5rem;
@@ -275,19 +279,19 @@ aside a.游显维 {
     top: 0;   
 }
    
-/* 教育经历和工作经历页面样式 */   
-.page4, .page5 {
+/* 教育经历和工作经验页面样式 */   
+.page_four, .page_five {
     background-color: rgba(255, 255, 255, 0.9); /* 添加半透明背景 */
     backdrop-filter: blur(3px);   
 }
    
-.经历 {
+.work_con {
     max-width: 900px;
     margin: 0 auto;
     position: relative;   
 }
    
-.经历:before {
+.work_con:before {
     content: '';
     position: absolute;
     left: 50%;
@@ -298,13 +302,13 @@ aside a.游显维 {
     transform: translateX(-50%);   
 }
    
-.项目 {
+.programe {
     display: flex;
     margin-bottom: 50px;
     position: relative;   
 }
    
-.时间 {
+.work_time {
     width: 45%;
     padding: 20px;
     text-align: right;
@@ -315,13 +319,13 @@ aside a.游显维 {
     font-style: normal;   
 }
    
-.内容 {
+.work_text {
     width: 55%;
     padding: 20px;
     position: relative;   
 }
    
-.左侧导航 {
+.triangle-left {
     position: absolute;
     left: -10px;
     top: 30px;
@@ -356,7 +360,7 @@ aside a.游显维 {
 }
    
 /* 向下箭头样式 */   
-.向下箭头 {
+.down_arrow {
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -398,23 +402,23 @@ aside a.游显维 {
         display: none; /* 移动端隐藏侧边栏 */
     }
     
-    .至理名言 h2 {
+    .cen_text h2 {
         font-size: 1.8rem;
     }
     
-    .至理名言 h3 {
+    .cen_text h3 {
         font-size: 1.2rem;
     }
     
-    .换行界线 h1 {
+    .tit_wrap h1 {
         font-size: 2.2rem;
     }
     
-    .基本资料 table {
+    .myinfo table {
         display: block;
     }
     
-    .基本资料 table td {
+    .myinfo table td {
         display: block;
         width: 100% !important;
         text-align: left !important;
@@ -423,7 +427,7 @@ aside a.游显维 {
         text-overflow: clip !important;
     }
     
-    .基本资料 table td:first-child {
+    .myinfo table td:first-child {
         margin-bottom: 10px;
         font-weight: bold;
         background-color: rgba(52, 152, 219, 0.1);
@@ -431,31 +435,29 @@ aside a.游显维 {
         padding: 15px;
     }
     
-    .基本资料 table td:last-child {
+    .myinfo table td:last-child {
         padding-top: 5px;
     }
     
-    .经历:before {
+    .work_con:before {
         left: 30px;
     }
     
-    .项目 {
+    .programe {
         flex-direction: column;
     }
     
-    .时间, .内容 {
+    .work_time, .work_text {
         width: 100%;
         text-align: left;
     }
     
-    .时间 {
+    .work_time {
         padding-left: 60px;
         margin-bottom: 10px;
     }
     
-    
-
-    .左侧导航 {
+    .triangle-left {
         left: 20px;
         border-right: 10px solid transparent;
         border-left: 10px solid white;
@@ -468,20 +470,20 @@ aside a.游显维 {
 }
    
 @media (max-width: 480px) {
-    页面区块 {
+    section {
         padding: 60px 15px;
     }
     
-    .个人肖像 {
+    .portrait {
         width: 150px;
         height: 150px;
     }
     
-    .技能介绍 {
+    .skill_con {
         padding: 25px;
     }
     
-    .基本资料 table td {
+    .myinfo table td {
         padding: 15px 10px;
     }   
 }
