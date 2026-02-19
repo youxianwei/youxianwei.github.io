@@ -230,3 +230,125 @@ form.onsubmit = (e)=>{
 
 
 
+
+
+<script>        
+// 轮播功能        
+document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.getElementById('softwareCarousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+    
+    let currentSlide = 0;
+        const totalSlides = slides.length;
+    
+    // 显示指定幻灯片
+        function showSlide(index) {
+        // 确保索引在有效范围内
+        if (index >= totalSlides) index = 0;
+        if (index < 0) index = totalSlides - 1;
+        
+        // 隐藏所有幻灯片
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        // 更新指示器
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // 显示当前幻灯片
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        // 更新当前索引
+        currentSlide = index;
+        
+        // 移动轮播容器
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+    
+    // 下一张幻灯片
+        function nextSlide() {
+        showSlide(currentSlide + 1);
+        }
+    
+    // 上一张幻灯片
+        function prevSlide() {
+        showSlide(currentSlide - 1);
+        }
+    
+    // 自动轮播
+        let autoSlideInterval = setInterval(nextSlide, 5000);
+    
+    // 重置自动轮播计时器
+        function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+    
+    // 事件监听
+        prevBtn.addEventListener('click', function() {
+        prevSlide();
+        resetAutoSlide();
+        });
+    
+    nextBtn.addEventListener('click', function() {
+        nextSlide();
+        resetAutoSlide();
+        });
+    
+    // 指示器点击事件
+        indicators.forEach(indicator => {
+        indicator.addEventListener('click', function() {
+            const slideIndex = parseInt(this.getAttribute('data-slide'));
+            showSlide(slideIndex);
+            resetAutoSlide();
+        });
+        });
+    
+    // 键盘控制
+        document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            resetAutoSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            resetAutoSlide();
+        }
+        });
+    
+    // 触摸滑动支持
+        let touchStartX = 0;
+        let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        });
+    
+    carousel.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        
+        if (touchStartX - touchEndX > swipeThreshold) {
+            // 向左滑动，下一张
+            nextSlide();
+            resetAutoSlide();
+        } else if (touchEndX - touchStartX > swipeThreshold) {
+            // 向右滑动，上一张
+            prevSlide();
+            resetAutoSlide();
+        }
+    }
+    
+    // 初始化显示第一张
+    showSlide(0);
+});
+</script>
