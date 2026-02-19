@@ -1243,3 +1243,123 @@ footer .copy p {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+
+
+/* 友情链接区域样式 */   
+.friend-links {
+   background-color: #f8f9fa;
+   padding: 40px 0;
+   margin-top: 60px;
+   border-top: 1px solid #eaeaea;   
+}
+   
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;   
+}
+   
+.links-title {
+   text-align: center;
+   font-size: 24px;
+   color: #333;
+   margin-bottom: 30px;
+   padding-bottom: 15px;
+   border-bottom: 2px solid #4a90e2;
+   display: inline-block;
+   position: relative;
+   left: 50%;
+   transform: translateX(-50%);   
+}
+   
+.links-title:after {
+   content: '';
+   position: absolute;
+   bottom: -2px;
+   left: 0;
+   width: 60px;
+   height: 2px;
+   background: #ff6b6b;   
+}
+   
+/* 链接网格布局 */   
+.links-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   gap: 20px;
+   justify-content: center;   
+}
+   
+/* 单个链接项样式 */   
+.link-item {
+   background: white;
+   border-radius: 10px;
+   padding: 20px;
+   transition: all 0.3s ease;
+   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+   border: 1px solid #eee;   
+}
+   
+.link-item:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+   border-color: #4a90e2;   
+}
+   
+.link-item a {
+   text-decoration: none;
+   color: #333;
+   display: block;   
+}
+   
+.link-logo {
+   margin-bottom: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;   
+}
+   
+.link-text {
+   font-size: 18px;
+   font-weight: 600;
+   color: #2c3e50;
+   transition: color 0.3s;   
+}
+   
+.link-item:hover .link-text {
+   color: #4a90e2;   
+}
+   
+.link-desc {
+   font-size: 14px;
+   color: #666;
+   text-align: center;
+   margin-top: 8px;
+   line-height: 1.4;   
+}
+   
+/* 响应式设计 */   
+@media (max-width: 768px) {
+   .links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+   }
+  
+  .friend-links {
+    padding: 30px 0;
+   }   
+}
+      
+@media (max-width: 480px) {
+   .links-grid {
+    grid-template-columns: 1fr;
+   }
+  
+  .link-item {
+    padding: 15px;
+   }   
+}   
