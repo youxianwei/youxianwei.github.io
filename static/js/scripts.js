@@ -230,174 +230,158 @@ form.onsubmit = (e)=>{
 
 
 
-// 确保DOM完全加载后再执行        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 确保DOM完全加载后再执行    
 document.addEventListener('DOMContentLoaded', function() {
-        // 轮播图功能
-        const slider = document.querySelector('.slider');
-        const slides = document.querySelector('.slides');
-        const slideCount = document.querySelectorAll('.slide').length;
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
+    // 轮播功能
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const indicators = document.querySelectorAll('.indicator');
     
     let currentSlide = 0;
-        let slideInterval;
+    const totalSlides = slides.length;
+    const slideWidth = 100 / totalSlides; // 每张幻灯片宽度百分比
     
-    // 初始化轮播
-        function initSlider() {
-        // 设置初始位置
-        updateSliderPosition();
+    // 初始化轮播位置
+    function updateSliderPosition() {
+        slider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
         
-        // 设置轮播自动播放
-        startAutoSlide();
-        
-        // 添加事件监听器
-        prevBtn.addEventListener('click', showPrevSlide);
-        nextBtn.addEventListener('click', showNextSlide);
-        
-        // 添加点状指示器点击事件
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const slideIndex = parseInt(this.getAttribute('data-slide'));
-                goToSlide(slideIndex);
-            });
-        });
-        
-        // 鼠标悬停时暂停自动播放
-        slider.addEventListener('mouseenter', pauseAutoSlide);
-        slider.addEventListener('mouseleave', startAutoSlide);
-        
-        // 触摸滑动支持
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        slider.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-            pauseAutoSlide();
-        });
-        
-        slider.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            startAutoSlide();
-        });
-        
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // 向左滑动，下一张
-                    showNextSlide();
-                } else {
-                    // 向右滑动，上一张
-                    showPrevSlide();
-                }
-            }
-        }
-        }
-    
-    // 更新轮播位置
-        function updateSliderPosition() {
-        slides.style.transform = `translateX(-${currentSlide * 20}%)`;
-        
-        // 更新点状指示器
-        dots.forEach((dot, index) => {
+        // 更新指示器状态
+        indicators.forEach((indicator, index) => {
             if (index === currentSlide) {
-                dot.classList.add('active');
+                indicator.classList.add('active');
             } else {
-                dot.classList.remove('active');
+                indicator.classList.remove('active');
             }
-        });
-        }
-    
-    // 显示下一张
-        function showNextSlide() {
-        currentSlide = (currentSlide + 1) % slideCount;
-        updateSliderPosition();
-        resetAutoSlide();
-        }
-    
-    // 显示上一张
-        function showPrevSlide() {
-        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-        updateSliderPosition();
-        resetAutoSlide();
-        }
-    
-    // 跳转到指定幻灯片
-        function goToSlide(index) {
-        if (index >= 0 && index < slideCount) {
-            currentSlide = index;
-            updateSliderPosition();
-            resetAutoSlide();
-        }
-        }
-    
-    // 开始自动轮播
-        function startAutoSlide() {
-        if (slideInterval) clearInterval(slideInterval);
-        slideInterval = setInterval(showNextSlide, 5000); // 5秒切换
-        }
-    
-    // 暂停自动轮播
-        function pauseAutoSlide() {
-        if (slideInterval) clearInterval(slideInterval);
-        }
-    
-    // 重置自动轮播
-        function resetAutoSlide() {
-        pauseAutoSlide();
-        startAutoSlide();
-        }
-    
-    // 初始化轮播
-        initSlider();
-    
-    // 图片懒加载处理
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.src;
-                    imageObserver.unobserve(img);
-                }
-            });
         });
         
-        lazyImages.forEach(img => imageObserver.observe(img));
-        } else {
-        // 回退方案：直接加载所有图片
-        lazyImages.forEach(img => {
-            img.src = img.src;
-        });
-        }
-    
-    // 淘宝按钮点击动画
-        const taobaoBtn = document.querySelector('.taobao-btn');
-        if (taobaoBtn) {
-        taobaoBtn.addEventListener('click', function(e) {
-            // 添加点击反馈
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 200);
-            
-            // 确保链接正常跳转
-            console.log('跳转到淘宝店铺:', this.href);
-            });
+        // 更新幻灯片激活状态
+        slides.forEach((slide, index) => {
+            if (index === currentSlide) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
             }
+        });
+    }
     
-        // 错误处理
-    window.addEventListener('error', function(e) {
-        console.error('页面错误:', e.message, e.filename, e.lineno);
-        // 可以在这里添加错误上报逻辑
+    // 下一张
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSliderPosition();
+    }
+    
+    // 上一张
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSliderPosition();
+    }
+    
+    // 自动轮播
+    let autoSlideInterval;
+    
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // 事件监听
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
     });
     
-    // 页面加载完成
-    console.log('AA软件作品页面加载完成');
-});
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+    });
+    
+    // 指示器点击事件
+    indicators.forEach(indicator => {
+        indicator.addEventListener('click', function() {
+            const slideIndex = parseInt(this.getAttribute('data-index'));
+            currentSlide = slideIndex;
+            updateSliderPosition();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+    });
+    
+    // 鼠标悬停时停止自动轮播
+    const sliderContainer = document.querySelector('.slider-container');
+    sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+    sliderContainer.addEventListener('mouseleave', startAutoSlide);
+    
+    // 触摸滑动支持
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    sliderContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoSlide();
+    }, {passive: true});
+    
+    sliderContainer.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoSlide();
+    }, {passive: true});
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // 向左滑动，下一张
+                nextSlide();
+            } else {
+                // 向右滑动，上一张
+                prevSlide();
+            }
+        }
+    }
+    
+    // 初始化
+    updateSliderPosition();
+    startAutoSlide();
+    
+    // 图片加载错误处理
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            console.warn('图片加载失败:', this.src);
+            this.style.backgroundColor = '#f0f0f0';
+            this.style.padding = '20px';
+            this.alt = '图片加载失败，请检查路径: ' + this.src;
+        });
+        });        
+});        
